@@ -22,5 +22,9 @@
         <input type="submit" value="Envoyer la demande">
     </form>
 
+    <footer>
+        <p>&copy; 2025 Sadilop Corporation. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
