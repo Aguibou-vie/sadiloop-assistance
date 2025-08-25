@@ -1,60 +1,213 @@
-*{
+/*reset*/
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* BODY*/
+
+
 body {
     font-family: arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
     color: #333;
-    line-height: 1.6; /*espace entre ligne*/
-    padding: 20px;
-}
-
-h1{
-    font-size: 36px;
-    color: #0077cc;
-    margin-top: 10px;  /*ajout de l'espace en dessous*/
+    line-height: 1.6;  /*espace entre ligne*/
 
 }
+/*container*/
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+
+header {
+    background-color: #0077CC;
+    color: white;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* NAVIGATION */
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 20px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #0077cc;
+    color: white;
     font-weight: bold;
+    transition: color 0.3s;
 }
-nav ul li a :hover {
-    color: #005999;
+nav ul li a:hover {
+    color: #ffd700;
 }
-p {
-    font-size: 28px;
+
+/* HERO SECTION*/
+.hero {
+    background-color: #eaf4fc ;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    color: #0077CC;
+    margin-bottom: 15 px;
+}
+
+.hero p {
+    font-size: 18px;
     margin-bottom: 15px;
+    color: #333;
+}
+/*BOUTON*/
+
+.btn {
+    display: inline-block;
+    padding: 12px;
+    background-color: #0077CC;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.btn :hover {
+    background-color: #005fa3;
+}
+
+.service {
+    padding:60px 20px;
+    background-color: #ffffff;
+    text-align: center;
 
 }
 
-h2 {
-    font-size: 16px;
-    color: #222;
+.service h2 {
+    font-size: 28px;
+    color: #0077CC;
+    margin-bottom: 40px;
+
+}
+
+/*Grille de service*/
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.service {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+
+}
+
+.service :hover {
+    transform: translateY(-5px);
+}
+.service h3 {
+    font-size: 20px;
+    color: #0077CC;
     margin-bottom: 10px;
 }
-
-section h2 {
-    color: #005999;
-    margin-top: 25;
-    font-size: 22px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
+.service p {
+    font-size: 16px;
+    color: #333;
 }
-section p {
-    margin-left: 15px;
-    margin-bottom:  20px;
-    color: #444;
+
+/*Temoignage*/
+
+.testimonial {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 60px 20px;
+    font-style: italic;
+}
+.testimonial blockquote {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px;
+}
+.testimonial .author {
+    font-weight: bold;
+    color: #0077CC;
+}
+/*CONTACT*/
+
+.contact {
+    background-color: #eaf4fc;
+    padding: 60px 20px;
+    text-align: center;
+}
+.contact h2 {
+    font-size: 26px;
+    color: #0077CC;
+    margin-bottom: 15px;
+}
+.contact p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input ,
+.contact textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 16px;
+}
+.contact button {
+    background-color: #0077CC;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+.contact button:hover {
+    background-color: #005fa3
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: #0077CC;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
 }
