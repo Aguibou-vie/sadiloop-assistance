@@ -1,17 +1,19 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
     $confirmation ="";
      //parametrage de connexion a la base de donner 
-    $host="localhost"
-    $dbname="u749724029_sadiloop_001"
-    $username="u749724029_sadiloop_admin"
-    $password="Sadiloop321@#sdlp"
+    $host="localhost";
+    $dbname="u749724029_sadiloop_001";
+    $username="u749724029_sadiloop_admin";
+    $password="Sadiloop321@#sdlp";
 
     try{
         $pdo= new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $username , $password);
-        $pdo-> setAttribute(PDO::ATT_ERRMODE , PDO::ERRMODE_EXCEPTION);
+        $pdo-> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
         echo "Connexion reussie!";
     }catch (PDOException $e){
-        die("Erreur de connexion a la base : ". $e -> getMessage())
+        die("Erreur de connexion a la base : ". $e -> getMessage());
     }
 
     //traitement du formulaire
@@ -22,7 +24,7 @@
         $probleme= htmlspecialchars($_POST["probleme"]);
 
         //insertion dans la base 
-        $sql= "INSERT INTO demandes (nom,email,probleme, date_envoi)" VALUES (:nom, :email , :probleme, NOW());
+        $sql= "INSERT INTO demandes (nom,email,probleme, date_envoi) VALUES (:nom, :email , :probleme, NOW());"
         $stmt= $pdo ->prepare($sql);
         $stmt -> execute([
             ':nom' => $nom,
