@@ -27,7 +27,7 @@ body {
 /* HEADER */
 
 header {
-    background-color: #0077CC;
+    background-color: #1f2340;
     color: white;
     padding: 20px 0;
 }
@@ -68,7 +68,7 @@ nav ul li a:hover {
 
 .hero h2 {
     font-size: 32px;
-    color: #0077CC;
+    color: #1f2340;
     margin-bottom: 15 px;
 }
 
@@ -82,7 +82,7 @@ nav ul li a:hover {
 .btn {
     display: inline-block;
     padding: 12px;
-    background-color: #0077CC;
+    background-color: #1f2340;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -90,7 +90,7 @@ nav ul li a:hover {
     transition: background-color 0.3s ease;
 }
 .btn :hover {
-    background-color: #005fa3;
+    background-color: #1f2340;
 }
 
 .service {
@@ -102,7 +102,7 @@ nav ul li a:hover {
 
 .service h2 {
     font-size: 28px;
-    color: #0077CC;
+    color: #1f2340;
     margin-bottom: 40px;
 
 }
@@ -130,7 +130,7 @@ nav ul li a:hover {
 }
 .service h3 {
     font-size: 20px;
-    color: #0077CC;
+    color: #1f2340;
     margin-bottom: 10px;
 }
 .service p {
@@ -153,7 +153,7 @@ nav ul li a:hover {
 }
 .testimonial .author {
     font-weight: bold;
-    color: #0077CC;
+    color: #1f2340;
 }
 /*CONTACT*/
 
@@ -164,7 +164,7 @@ nav ul li a:hover {
 }
 .contact h2 {
     font-size: 26px;
-    color: #0077CC;
+    color: #1f2340;
     margin-bottom: 15px;
 }
 .contact p {
@@ -188,7 +188,7 @@ nav ul li a:hover {
     font-size: 16px;
 }
 .contact button {
-    background-color: #0077CC;
+    background-color: #1f2340;
     color: white;
     padding: 12px;
     border: none;
@@ -199,13 +199,13 @@ nav ul li a:hover {
 
 }
 .contact button:hover {
-    background-color: #005fa3
+    background-color: #1f2340;
 }
 
 /*FOOTER*/
 
 footer {
-    background-color: #0077CC;
+    background-color: #1f2340;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -249,7 +249,7 @@ footer {
 }
 
 footer a:hover i {
-    color: #0d6efd;
+    color: #1f2340;
     transition: 0.3s;
 }
 
