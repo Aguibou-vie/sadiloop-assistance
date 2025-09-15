@@ -1,0 +1,39 @@
+/* style.css */
+.section-accueil {
+    background: linear-gradient(to right, #161c38, #1f2340);
+    padding: 80px 0;
+    color: #fff;
+}
+
+.btn {
+    transition: 0.3s ease;
+}
+.btn:hover {
+    transform: scale(1.05);
+}
+/*animatioon au survol*/
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3 ease;
+    border: none;
+    border-radius: 12px;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Témoignage client */
+.testimonial {
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.02);
+}
+
+footer a:hover i {
+    color: #0d6efd;
+    transition: 0.3s;
+}
+
