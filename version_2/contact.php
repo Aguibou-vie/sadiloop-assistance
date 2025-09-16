@@ -1,42 +1,39 @@
-<?php 
-$confirmation="";
+<?php
+$confirmation = "";
 
-if ($_SERVER["RESQUEST_METHOD"]== "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nom = htmlspecialchars($_POST["nom"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $message = htmlspecialchars($_POST["message"]);
 
-    $nom= htmlspecialchars($_post["nom"]);
-    $email = htmlspecialchars($_post["email"]);
-    $message= htmlspecialchars($_POST["probleme"]);
-
-    //connexion a la base de donner(hostinger)
-
-    
-    $host="localhost";
-    $dbname="u749724029_sadiloop_001";
-    $username="u749724029_sadiloop_admin";
-    $password="Sadiloop321@#sdlp";
+    // Connexion à la base de données (Hostinger)
+    $host = "localhost";
+    $dbname = "u749724029_sadiloop_001";
+    $username = "u749724029_sadiloop_admin";
+    $password = "Sadiloop321@fsdlp";
 
     try {
-        $pdo= new PDO("mysql: host=$host; dbname=$dbname; charset="utf8", $username, $password");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            //INSERTION EN BASE
-        $sql="INSERT INTO contact(nom, email, probleme, date_envoi) VALUE(:nom, :email, :probleme, NOM())";
-        $stmt= $pdo->prepare($sql);
+        // Insertion en base
+        $sql = "INSERT INTO contact (nom, email, message, date_envoi) 
+                VALUES (:nom, :email, :message, NOW())";
+
+        $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':nom'-> $nom,
-            ':email'-> $email,
-            ':probleme'-> $probleme
+            'nom' => $nom,
+            'email' => $email,
+            'message' => $message
         ]);
-        $confirmation= "Merci $nom votre message a été envoyé avec succès. ";
 
-    }catch (PDOEception $e){
-        $confirmation= "Erreur : ". $e->getMessage();
+        $confirmation = "Merci $nom, votre message a été envoyé avec succès.";
+    } catch (PDOException $e) {
+        $confirmation = "Erreur : " . $e->getMessage();
     }
-
-    
 }
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,48 +45,127 @@ if ($_SERVER["RESQUEST_METHOD"]== "POST"){
     <title>Contact - Sadiloop</title>
 </head>
 <body>
-    
-    <section class="py-5 bg-light">
+    <!--  Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <h2 class="text-center mb-4">Contactez-nous</h2>
-        
-            <?php if ($confirmation):?>
-                <div class="alert alert-succes text-center"><?php echo $confirmation;?></div>
-            <?php endif?>
-            <div class="row">
-                <!-- formulaire -->
-                <div class="col-md-6">
+            <a class="navbar-brand text-primary" href="#">
+                <img src="assets/img/Sadiloop.png" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
+                Sadiloop$ </a>
+
+            <!--  Menu mobile (burger) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmain">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Liensdu menu -->
+            <div class="collapse navbar-collapse" id="navbarmain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-warning" href="request.php">Demande d'aide</a>
+            </div>
+        </div>
+    </nav>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <!-- Colonne formulaire -->
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4 text-primary">📩 Contactez-nous</h2>
+                    
+                    <!-- Formulaire -->
                     <form method="POST" action="contact.php">
-                        <div class="mb-4">
-                            <label class="form-label">Nom</label>
-                            <input type="text" name="nom" class="form-control">
-                        </div>
+                        <!-- Nom -->
                         <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" id="" required>
+                            <label for="nom" class="form-label fw-bold">Nom</label>
+                            <input type="text" class="form-control rounded-3" id="nom" name="nom" required>
                         </div>
+
+                        <!-- Email -->
                         <div class="mb-3">
-                            <label for="" class="form-label">Message</label>
-                            <textarea name="message" id="" class="form-control" required rows="5"></textarea>
+                            <label for="email" class="form-label fw-bold">Email</label>
+                            <input type="email" class="form-control rounded-3" id="email" name="email" required>
                         </div>
-                        <button class="btn btn-primary" type="submit">Envoyer</button>
+
+                        <!-- Message -->
+                        <div class="mb-3">
+                            <label for="message" class="form-label fw-bold">Message</label>
+                            <textarea class="form-control rounded-3" id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <!-- Bouton -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3">
+                                Envoyer
+                            </button>
+                        </div>
                     </form>
-                </div>
-                <!--coordonner-->
-                <div class="col-md-6">
-                    <h5 class="fw-bold">Nos coordonnées</h5>
-                    <p><i class="bi bi-geo-alt-fill"></i>Galicia, Espagne</p>
-                    <p><i class="bi bi-envelope-fill"></i>support@sadiloop.com</p>
-                    <p><i class="bi bi-phone-fill"></i>+0034604899711</p>
-                    <div>
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Colonne coordonnées -->
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">📍 Nos coordonnées</h4>
+                <p><i class="bi bi-geo-alt-fill text-primary"></i> Galicia, Espagne</p>
+                <p><i class="bi bi-envelope-fill text-primary"></i> support@sadiloop.com</p>
+                <p><i class="bi bi-phone-fill text-primary"></i> +34 604 899 711</p>
+                <div class="d-flex gap-3 mt-3">
+                    <a href="#" class="text-dark fs-4"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-dark fs-4"><i class="bi bi-twitter"></i></a>
+                    <a href="https://github.com/Aguibou-vie" class="text-dark fs-4"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class=" text-white pt-5 pb-3 mt-5" style="background-color: #1f2340">
+        <div class="container" style="background-color: #1f2340">
+            <div class="row">
+                <!-- Colonne 1 : Logo + présentation -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Sadiloop Corporation</h5>
+                    <p>Assistance informatique rapide, création de sites web modernes et accompagnement technique.</p>
+                </div>
+                <!-- Colonne 2 : Liens utiles -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Navigation</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index2.html" class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="services.html" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="projects.html" class="text-white text-decoration-none">Projets</a></li>
+                        <li><a href="request.php" class="text-white text-decoration-none">Demande d'aide</a></li>
+                    </ul>
+                </div>
+                <!-- Colonne 3 : contact &reseau-->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Contact</h5>
+                    <p><i class="bi bi-envelope-fill"></i> support@sadiloop.com</p>
+                    <p><i class="bi bi-phone-fill"></i> +34 604 899 711</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></i></a>
+                        <a href="https://github.com/Aguibou-vie" class="text-white fs-4"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light">
+        </div>
+    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
