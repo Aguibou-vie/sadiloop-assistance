@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-md-6">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-4">
-                    <h2 class="text-center mb-4 text-primary">📩 Contactez-nous</h2>
+                    <h2 class="text-center mb-4 text-primary ,">📩 Contactez-nous</h2>
                     
                     <!-- Formulaire -->
                     <form method="POST" action="contact.php">
@@ -163,6 +163,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <hr class="border-light">
+        </div>
+        <div class="container">
+            <div class="text-center">
+            <p class="mb-0">&copy; 2025 Sadiloop Corporation – Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
